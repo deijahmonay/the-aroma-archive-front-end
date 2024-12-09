@@ -12,6 +12,13 @@ const App = () => {
   return (
     <>
       <NavBar user={user} />
+      <Routes>
+        { user ? (
+            <Route path="/" element={<Dashboard user={user} />} />
+         ) : (
+            <Route path="/" element={<Landing />} />
+         )}
+      </Routes>
       <h1>🌸Welcome to Your Aroma Archive🌸</h1>
     </>  
     )

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar.jsx'
 import Landing from './components/Landing/Landing.jsx'
 import Dashboard from './components/Dashboard/Dashboard.jsx'
+import SignupForm from './components/SignupForm/SignupForm.jsx'
 
 
 
@@ -13,14 +14,16 @@ const App = () => {
     <>
       <NavBar user={user} />
       <Routes>
-        { user ? (
+        {
+          user ?
             <Route path="/" element={<Dashboard user={user} />} />
-         ) : (
+          :
             <Route path="/" element={<Landing />} />
-         )}
+        }  
+        <Route path='/signup' element={<SignupForm />} />
       </Routes>
-    </>  
-    )
+    </>
+  )
 }
 
 export default App

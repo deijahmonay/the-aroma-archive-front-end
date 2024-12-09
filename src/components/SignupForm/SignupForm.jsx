@@ -86,3 +86,5 @@ return (
   </main>
   )
 }
+
+export default SignupForm

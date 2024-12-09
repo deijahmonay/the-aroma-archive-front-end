@@ -10,4 +10,17 @@ const SignupForm = (props) => {
     password: '',
     passwordConf:'',
   })
+
+  const updatedMessage = (msg) => {
+    setMessage(msg)
+  }
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value })
+  }
+
+  const isFormInvalid = () => {
+    const { username, email, password, passwordConf } = formData
+    return !(username && email && password & password === passwordConf)
+  }
 }

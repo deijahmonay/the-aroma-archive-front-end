@@ -11,16 +11,78 @@ const SignupForm = (props) => {
     passwordConf:'',
   })
 
-  const updatedMessage = (msg) => {
+const updatedMessage = (msg) => {
     setMessage(msg)
   }
 
-  const handleChange = (e) => {
+const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value })
   }
 
-  const isFormInvalid = () => {
-    const { username, email, password, passwordConf } = formData
+const handleSumbit = async (e) => {
+    e.preventDefault()
+    updatedMessage('')
+    console.l9og(formData)
+  }
+
+const { username, email, password, passwordConf } = formData
+
+const isFormInvalid = () => {
     return !(username && email && password & password === passwordConf)
   }
+
+return (
+  <main>
+    <h1>Sign Up</h1>
+    <p>{message}</p>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          id="name"
+          value={username}
+          name="username"
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="username">Username:</label>
+        <input 
+        type="email"
+        id="email"
+        value={formData.email}
+        name="email"
+        onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          value={password}
+          name="password"
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="confirm">Confirm Password:</label>
+        <input
+          type="password"
+          id="confirm"
+          value={passwordConf}
+          name="passwordConf"
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <button disabled={isFormInvalid()}>Sign Up</button>
+        <Link to="/">
+          <button>Cancel</button>
+        </Link>
+      </div>
+    </form>
+  </main>
+  )
 }

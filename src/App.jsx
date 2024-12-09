@@ -19,7 +19,6 @@ const App = () => {
             <Route path="/" element={<Landing />} />
          )}
       </Routes>
-      <h1>🌸Welcome to Your Aroma Archive🌸</h1>
     </>  
     )
 }

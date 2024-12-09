@@ -9,6 +9,4 @@ const index = async () => {
   }
 }
 
-export {
-  index
-}
+export { index }

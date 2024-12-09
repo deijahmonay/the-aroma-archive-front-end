@@ -12,16 +12,15 @@ const App = () => {
 
   return (
     <>
-      <NavBar user={user} />
-      <Routes>
-        {
-          user ?
-            <Route path="/" element={<Dashboard user={user} />} />
-          :
-            <Route path="/" element={<Landing />} />
-        }  
-        <Route path='/signup' element={<SignupForm />} />
-      </Routes>
+    <NavBar user={user} />
+    <Routes>
+      { user ? (
+        <Route path='/' element={<Dashboard user={user}/>} />
+      ) : (
+        <Route path='/' element={<Landing />}/>
+      )}
+      <Route path='/signup' element={<SignupForm setUser={setUser} />} />
+    </Routes>
     </>
   )
 }

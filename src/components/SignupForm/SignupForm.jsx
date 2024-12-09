@@ -1,4 +1,4 @@
-import { useState } from 'react-router-dom'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const SignupForm = (props) => {
@@ -19,17 +19,21 @@ const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value })
   }
 
-const handleSumbit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault()
-    updatedMessage('')
-    console.l9og(formData)
+    try {
+      props.setUser(formData)
+      navigate('/')
+    }catch(err) {
+      updatedMessage(err.message)
+    }
   }
 
 const { username, email, password, passwordConf } = formData
 
 const isFormInvalid = () => {
-    return !(username && email && password & password === passwordConf)
-  }
+  return !(username && email && password && password === passwordConf);
+}
 
 return (
   <main>
@@ -47,7 +51,7 @@ return (
         />
       </div>
       <div>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="email">Email:</label>
         <input 
         type="email"
         id="email"
@@ -76,6 +80,7 @@ return (
           onChange={handleChange}
         />
       </div>
+      
       <div>
         <button disabled={isFormInvalid()}>Sign Up</button>
         <Link to="/">

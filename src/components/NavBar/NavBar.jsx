@@ -1,11 +1,23 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 const NavBar = ({ user }) => {
   return (
     <>
-    <p>🌸Aroma Archive NavBar🌸</p>
+      { user ? (
+        <nav>
+          <ul>
+            <li><Link to="/">Home</Link></li>
+          </ul>
+        </nav>
+      ) : (
+        <nav>
+          <ul>
+            <li><Link to="/signin">Sign In</Link></li>
+          </ul>
+        </nav>
+      )}
     </>
   )
 }
 
-export default NavBar
+export default NavBar;

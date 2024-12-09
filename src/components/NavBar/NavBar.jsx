@@ -7,6 +7,7 @@ const NavBar = ({ user }) => {
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
+            <li><Link to="">Sign Out</Link></li>
           </ul>
         </nav>
       ) : (
